@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { Box, TextField, Button, Typography, Grid } from "@mui/material";
-import { IUser } from "../../../types/app";
+import { Box, Button, Typography, Grid } from "@mui/material";
 import useUser from "../../../hooks/auth/useUser";
 import FormInput from "../../../component/formInput/formInput";
 import { Link } from "react-router-dom";

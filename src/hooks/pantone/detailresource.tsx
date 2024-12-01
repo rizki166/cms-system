@@ -9,7 +9,7 @@ const useDetail = () => {
     const [resources, setResources] = useState<IResource | null>(null);
     const { resourceId } = useParams<{ resourceId?: string }>();
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<any>(null);
+    const [error] = useState<any>(null);
     
     
     useEffect(() => {

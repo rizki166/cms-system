@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const useLogin = () => {
   const navigate = useNavigate();
   const [formInfo, setFormInfo] = useState<ILogin>({ email: "", password: "" });
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [errors] = useState<{ [key: string]: string }>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormInfo({ ...formInfo, [e.target.name]: e.target.value });

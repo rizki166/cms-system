@@ -6,7 +6,7 @@ import { IUser, userform } from "../../types/app";
 
 const userss = () => {
   const [users, setUsers] = useState<IUser[]>([]); 
-  const [user, setUser] = useState<IUser | null>(null); 
+  const [user] = useState<IUser | null>(null); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>(null);
   const [formInfo, setFormInfo] = useState<userform>({
@@ -15,7 +15,7 @@ const userss = () => {
     last_name: "",
     avatar: "",
   });
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [errors] = useState<{ [key: string]: string }>({});
   useEffect(() => {
    
         const fetchUsers = async () => {

@@ -21,7 +21,7 @@ const TableInputDetailColumn: FC<TableInputDetailColumnProps> = ({
     title,
     props,
     hideDivider = false,
-    isResponsive = 'auto',
+   
 }) => {
     const titleValue = typeof title === 'string' ? title : title?.value;
     const titleProps = typeof title === 'object' && title.props ? title.props : {};

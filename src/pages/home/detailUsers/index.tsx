@@ -1,6 +1,5 @@
-import React from "react";
-import { Card, CardContent, Typography, CardMedia, Box, CircularProgress, Alert } from "@mui/material";
-import useUser from "../../../hooks/auth/useUser"; // Menggunakan hook useUser
+import { Card, CardContent, Typography, CardMedia, Box, Alert } from "@mui/material";
+import useUser from "../../../hooks/auth/useUser"; 
 import TableInputDetailColumn from "../../../component/colomn/tableinputdetail";
 import ContentLoader from "react-content-loader";
 
@@ -22,7 +21,7 @@ const ShimmerEffect = () => (
 );
 
 const UserDetail = () => {
-  const { user, loading, error } = useUser();
+  const { user, loading } = useUser();
 
   if (loading) {
     return (

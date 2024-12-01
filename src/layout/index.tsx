@@ -106,22 +106,14 @@ function useDemoRouter(initialPath: string): Router {
     return router;
 }
 
-const handleLogout = () => {
-    console.log("Logging out...");
-    localStorage.removeItem('token'); // Menghapus token dari localStorage
-    console.log(localStorage.getItem('token')); // Periksa apakah token sudah hilang
-    localStorage.removeItem('userData'); // Menghapus data user jika ada
-    console.log(localStorage.getItem('userData')); // Periksa apakah userData sudah hilang
-    window.location.replace('/login'); // Ganti ke halaman login menggunakan replace
-};
 
 
 
 
 export default function MainLayout(props: any) {
-    const { window, children } = props; // Menerima children
+    const { window, children } = props; 
 
-    const router = useDemoRouter('/personnel'); // Rute awal untuk personnel
+    const router = useDemoRouter('/personnel');
     const demoWindow = window ? window() : undefined;
 
     return (

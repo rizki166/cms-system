@@ -34,7 +34,6 @@ const Home = () => {
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [openAddModal, setOpenAddModal] = useState(false);
 
   const handleClickOpen = (user: any, event: React.MouseEvent<HTMLElement>) => {
     setSelectedUser(user);
@@ -58,9 +57,12 @@ const Home = () => {
       setAnchorEl(null);
     }
   };
-  const handleDelete = async (id: number) => {
-    await handleDeleteUser(selectedUser.id);
-    setAnchorEl(null); 
+
+  const handleDelete = async () => {
+    if (selectedUser) {
+      await handleDeleteUser(selectedUser.id);
+      setAnchorEl(null);
+    }
   };
 
   const filteredUsers = users.filter((user) =>
@@ -101,13 +103,8 @@ const Home = () => {
           Search
         </Button>
         <Link to='add'>
-          <Button
-            onClick={() => setOpenAddModal(true)}
-            sx={{ backgroundColor: '#437fff', color: 'white', height: '40px', gap: 1 }}
-          >
-            <IoAdd size={20} />
-
-            Add
+          <Button sx={{ backgroundColor: '#437fff', color: 'white', height: '40px', gap: 1 }}>
+            <IoAdd size={20} /> Add
           </Button>
         </Link>
       </Box>
@@ -136,7 +133,7 @@ const Home = () => {
                   <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
                     <MenuItem><Link to={`/detail/${selectedUser?.id}`} style={{ textDecoration: 'none', color: 'inherit' }}><BiDetail /> Detail</Link></MenuItem>
                     <MenuItem onClick={() => setOpenEditModal(true)}><MdOutlineEdit /> Edit</MenuItem>
-                    <MenuItem onClick={() => handleDelete(selectedUser.id)}><MdOutlineDelete /> Delete</MenuItem>
+                    <MenuItem onClick={() => handleDelete()}><MdOutlineDelete /> Delete</MenuItem>
                   </Menu>
                 </TableCell>
               </TableRow>
@@ -150,7 +147,7 @@ const Home = () => {
         count={filteredUsers.length}
         rowsPerPage={rowsPerPage}
         page={page}
-        onPageChange={(e, newPage) => setPage(newPage)}
+        onPageChange={(_, newPage) => setPage(newPage)}
         onRowsPerPageChange={(e) => setRowsPerPage(parseInt(e.target.value))}
       />
 
@@ -161,8 +158,6 @@ const Home = () => {
         handleChange={handleChange}
         onSubmit={handleSubmitEdit}
       />
-
-
     </Paper>
   );
 };

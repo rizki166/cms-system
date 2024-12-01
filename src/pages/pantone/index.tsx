@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
 import useResournce from '../../hooks/pantone/useResournce';
 
 const PantonePage = () => {
-    const { resource, loading, error, handleDelete, setFormInfo, } = useResournce();
+    const { resource, loading, handleDelete, setFormInfo, } = useResournce();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [searchTerm, setSearchTerm] = useState('');
@@ -41,9 +41,9 @@ const PantonePage = () => {
         });
         setAnchorEl(event.currentTarget);
     };
-    const Deleted = async (id: number) => {
-        await handleDelete(selectedResource.id); 
-        setAnchorEl(null); 
+    const Deleted = async () => {
+        await handleDelete(selectedResource.id);
+        setAnchorEl(null);
     };
 
 
@@ -110,7 +110,7 @@ const PantonePage = () => {
                                     </IconButton>
                                     <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
                                         <MenuItem sx={{ display: 'flex', gap: 2, fontWeight: 500 }}><Link to={`/detail-pantone/${selectedResource?.id}`} style={{ textDecoration: 'none', color: 'inherit' }}><BiDetail /> Detail</Link></MenuItem>
-                                        <MenuItem onClick={() => Deleted(selectedResource.id)}><MdOutlineDelete /> Delete</MenuItem>
+                                        <MenuItem onClick={() => Deleted()}><MdOutlineDelete /> Delete</MenuItem>
                                     </Menu>
                                 </TableCell>
                             </TableRow>
@@ -124,7 +124,7 @@ const PantonePage = () => {
                 count={filteredResources.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
-                onPageChange={(e, newPage) => setPage(newPage)}
+                onPageChange={(_, newPage) => setPage(newPage)}
                 onRowsPerPageChange={(e) => setRowsPerPage(parseInt(e.target.value))}
             />
 
