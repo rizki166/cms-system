@@ -16,8 +16,6 @@ const useLogin = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    
-
     try {
       const response = await loginApi(formInfo);
       if (response.status === 200 && response.data?.token) {
@@ -33,10 +31,9 @@ const useLogin = () => {
         throw new Error("Login failed");
       }
     } catch (error: any) {
-      console.error(error);
       Swal.fire({
         title: "Error!",
-        text: error.response?.data?.error,
+        text: "Email or password is incorrect.",
         icon: "error",
         confirmButtonText: "OK",
       });

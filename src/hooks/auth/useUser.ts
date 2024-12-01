@@ -5,7 +5,7 @@ import {
   deleteUser,
   createUser,
   updateUser,
-} from "../../lib/api/call/user"; 
+} from "../../lib/api/call/user";
 import { IUser, userform } from "../../types/app";
 import { useNavigate, useParams } from "react-router-dom";
 import { addUserSchema } from "../../helpers/schemas/registerSchema";
@@ -13,11 +13,11 @@ import Swal from "sweetalert2";
 
 const useUser = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState<IUser[]>([]); 
-  const [user, setUser] = useState<IUser | null>(null); 
+  const [users, setUsers] = useState<IUser[]>([]);
+  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>(null);
-  const { userId } = useParams<{ userId?: string }>(); 
+  const { userId } = useParams<{ userId?: string }>();
   const [formInfo, setFormInfo] = useState<userform>({
     email: "",
     first_name: "",
@@ -74,7 +74,8 @@ const useUser = () => {
 
   const handleEditUser = async (id: number) => {
     try {
-       await updateUser(id, formInfo);
+      const response = await updateUser(id, formInfo);
+      if (response.status === 200) {
         Swal.fire({
           title: "Success!",
           text: "User updated successfully",
@@ -86,7 +87,7 @@ const useUser = () => {
             user.id === id ? { ...user, ...formInfo } : user
           )
         );
-   
+      }
     } catch (err) {
       Swal.fire("Error Updating User");
     }

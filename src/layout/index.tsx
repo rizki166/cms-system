@@ -16,10 +16,7 @@ const NAVIGATION: Navigation = [
         kind: 'header',
         title: 'Main items',
     },
-    {
-        segment: 'dashboard',
-        title: 'Dashboard',
-    },
+    
     {
         segment: 'Administrative',
         title: 'Administrative',
@@ -62,10 +59,7 @@ const NAVIGATION: Navigation = [
         title: 'Settings',
     },
 
-    {
-        segment: 'integrations',
-        title: 'Integrations',
-    },
+   
     {
         segment: 'login',
         title: 'Logout',
@@ -90,7 +84,7 @@ const demoTheme = extendTheme({
 
 function useDemoRouter(initialPath: string): Router {
     const [pathname, setPathname] = React.useState(initialPath);
-    const navigate = useNavigate(); // Ambil hook navigate
+    const navigate = useNavigate(); 
 
     const router = React.useMemo(() => {
         return {

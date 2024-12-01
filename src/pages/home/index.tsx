@@ -79,6 +79,7 @@ const Home = () => {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'auto', fontSize: '10px' }}>
+      
       <Typography variant="h6" gutterBottom sx={{ padding: 1 }}>
         Personnel Register
       </Typography>

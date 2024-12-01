@@ -1,11 +1,6 @@
 import axios from "axios";
 import API from "..";
-import {
-  ILogin,
-  IRegister,
-  IApiResponse,
-  userform,
-} from "../../../types/app";
+import { ILogin, IRegister, IApiResponse, userform } from "../../../types/app";
 
 export const loginApi = async (body: ILogin): Promise<IApiResponse> => {
   return await API.post("/login", body);
@@ -28,7 +23,7 @@ export const getUser = async (id: number) => {
 };
 
 export const updateUser = async (id: number, body: userform) => {
-  return await axios.put(`/users/${id}`, body);
+  return await API.put(`/users/${id}`, body);
 };
 
 export const deleteUser = async (id: number) => {
